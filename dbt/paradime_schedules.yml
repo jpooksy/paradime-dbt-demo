@@ -5,7 +5,7 @@ schedules:
     environment: production
     commands:
       - dbt run
-    owner_email: fabio@paradime.io
+    owner_email: parker@paradime.io
     slack_notify:
       - "#tmp-alert-testing"
       - "@fabio"
