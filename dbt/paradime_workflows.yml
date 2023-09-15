@@ -1,0 +1,41 @@
+workflows:
+  radar:
+    - name: "looker_pdts_warn_alert"
+      signal: "derived_tables"
+      severity: warning
+      owner: "@fabio"
+      notify: true
+      slack:
+        - "#tmp-alert-testing"
+                
+    - name: "lookml_errors_alert"
+      signal: "lookml_errors"
+      severity: warning
+      owner: "@fabio"
+      notify: true
+      slack:
+        - "#tmp-alert-testing"
+        
+    - name: "dbt_malformed_yml_alert"
+      signal: "dbt_malformed_yml"
+      severity: warning
+      owner: "@fabio"
+      notify: true
+      slack:
+        - "#tmp-alert-testing"
+        
+    - name: "$only_max orphan Views"
+      signal: "looker_orphan_views"
+      severity: critical
+      owner: "@fabio"
+      notify: true
+      slack:
+        - "#tmp-alert-testing"
+        
+    - name: "stale_dwh_alert"
+      signal: "stale_dwh"
+      severity: error
+      owner: "@fabio"
+      notify: true
+      slack:
+        - "#tmp-alert-testing"  

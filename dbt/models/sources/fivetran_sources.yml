@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: sheets
+    loader: fivetran
+    loaded_at_field: _fivetran_synced
+    freshness: # default freshness
+      warn_after: {count: 12, period: hour}
+      error_after: {count: 48, period: hour}
+    tables:
+      - name: ingested_raw_customers
+      - name: ingested_raw_orders
+      - name: raw_payments_ing
+        identifier: ingested_raw_payments
+      - name: fivetran_audit
+        freshness: null

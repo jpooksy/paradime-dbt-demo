@@ -1,0 +1,15 @@
+version: 2
+models:
+  - name: order_payments
+    meta:
+      foo: true
+      is sensitive: false
+    description: "This table contains data about all the payments executed against\
+      \ each order\n\nOrder types cane be\n\n- shipped\n- pending\n- somethingelse"
+    columns:
+      - name: order_id
+        description: the unique identifier of the order. `Primary key`
+  - name: customer_orders
+    columns:
+      - name: customer_id
+        description: test

@@ -1,0 +1,9 @@
+workflows:
+  catalogue_edit:
+    owners:
+      - "@fabio"
+      - "@yasin"
+      - "yasin@paradime.io"
+      - "fabio@paradime.io"
+      
+   

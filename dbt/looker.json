@@ -1,0 +1,492 @@
+{
+  "node_objects": [
+    {
+      "node_type": "looker:view",
+      "name": "zuora_refund_invoices",
+      "parents": [
+        [
+          "sql",
+          "fact_orders"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:view",
+      "name": "zuora_refund_xf",
+      "parents": [
+        [
+          "sql",
+          "fact_orders"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:view",
+      "name": "zuora_invoices_beyond_30days",
+      "parents": [
+        [
+          "sql",
+          "fact_orders"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:explore",
+      "name": "sales_operations",
+      "parents": [
+        [
+          "looker:view",
+          "zuora_refund_invoices"
+        ],
+        [
+          "looker:view",
+          "zuora_invoices_beyond_30days"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:explore",
+      "name": "accounts",
+      "parents": [
+        [
+          "looker:view",
+          "zuora_refund_xf"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:look",
+      "name": "daily_refund_pending_value",
+      "parents": [
+        [
+          "looker:explore",
+          "sales_operations"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:look",
+      "name": "monthly_refund_pending_value",
+      "parents": [
+        [
+          "looker:explore",
+          "sales_operations"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:look",
+      "name": "count_pending_refund",
+      "parents": [
+        [
+          "looker:explore",
+          "sales_operations"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:look",
+      "name": "rolling_30d_refund_accounts",
+      "parents": [
+        [
+          "looker:explore",
+          "sales_operations"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:look",
+      "name": "late_accounts_details",
+      "parents": [
+        [
+          "looker:explore",
+          "sales_operations"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:look",
+      "name": "accounts_late_inovice_age_chorth1",
+      "parents": [
+        [
+          "looker:explore",
+          "sales_operations"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:look",
+      "name": "accounts_late_inovice_age_chorth2",
+      "parents": [
+        [
+          "looker:explore",
+          "sales_operations"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:look",
+      "name": "accounts_late_inovice_age_chorth3",
+      "parents": [
+        [
+          "looker:explore",
+          "sales_operations"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:look",
+      "name": "accounts_late_inovice_age_chorth4",
+      "parents": [
+        [
+          "looker:explore",
+          "sales_operations"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:look",
+      "name": "enterprise_sales_follow_up_datails",
+      "parents": [
+        [
+          "looker:explore",
+          "sales_operations"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:look",
+      "name": "daily_refund_processed_value",
+      "parents": [
+        [
+          "looker:explore",
+          "accounts"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:look",
+      "name": "monthly_refund_processed_value",
+      "parents": [
+        [
+          "looker:explore",
+          "accounts"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:look",
+      "name": "count_processed_refund",
+      "parents": [
+        [
+          "looker:explore",
+          "accounts"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:look",
+      "name": "average_refunded_invoice_value",
+      "parents": [
+        [
+          "looker:explore",
+          "accounts"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:dashboard",
+      "name": "ops_enterprise",
+      "parents": [
+        [
+          "looker:look",
+          "daily_refund_pending_value"
+        ],
+        [
+          "looker:look",
+          "monthly_refund_pending_value"
+        ],
+        [
+          "looker:look",
+          "count_pending_refund"
+        ],
+        [
+          "looker:look",
+          "rolling_30d_refund_accounts"
+        ],
+        [
+          "looker:look",
+          "daily_refund_processed_value"
+        ],
+        [
+          "looker:look",
+          "monthly_refund_processed_value"
+        ],
+        [
+          "looker:look",
+          "count_processed_refund"
+        ],
+        [
+          "looker:look",
+          "average_refunded_invoice_value"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:dashboard",
+      "name": "ops_startup",
+      "parents": [
+        [
+          "looker:look",
+          "daily_refund_pending_value"
+        ],
+        [
+          "looker:look",
+          "monthly_refund_pending_value"
+        ],
+        [
+          "looker:look",
+          "count_pending_refund"
+        ],
+        [
+          "looker:look",
+          "rolling_30d_refund_accounts"
+        ],
+        [
+          "looker:look",
+          "daily_refund_processed_value"
+        ],
+        [
+          "looker:look",
+          "monthly_refund_processed_value"
+        ],
+        [
+          "looker:look",
+          "count_processed_refund"
+        ],
+        [
+          "looker:look",
+          "average_refunded_invoice_value"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:dashboard",
+      "name": "finance_postings",
+      "parents": [
+        [
+          "looker:look",
+          "daily_refund_pending_value"
+        ],
+        [
+          "looker:look",
+          "monthly_refund_pending_value"
+        ],
+        [
+          "looker:look",
+          "rolling_30d_refund_accounts"
+        ],
+        [
+          "looker:look",
+          "daily_refund_processed_value"
+        ],
+        [
+          "looker:look",
+          "monthly_refund_processed_value"
+        ],
+        [
+          "looker:look",
+          "average_refunded_invoice_value"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:dashboard",
+      "name": "accounts_enterprise",
+      "parents": [
+        [
+          "looker:look",
+          "late_accounts_details"
+        ],
+        [
+          "looker:look",
+          "accounts_late_inovice_age_chorth1"
+        ],
+        [
+          "looker:look",
+          "accounts_late_inovice_age_chorth2"
+        ],
+        [
+          "looker:look",
+          "accounts_late_inovice_age_chorth3"
+        ],
+        [
+          "looker:look",
+          "accounts_late_inovice_age_chorth4"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:dashboard",
+      "name": "accounts_premium",
+      "parents": [
+        [
+          "looker:look",
+          "late_accounts_details"
+        ],
+        [
+          "looker:look",
+          "accounts_late_inovice_age_chorth1"
+        ],
+        [
+          "looker:look",
+          "accounts_late_inovice_age_chorth2"
+        ],
+        [
+          "looker:look",
+          "accounts_late_inovice_age_chorth3"
+        ],
+        [
+          "looker:look",
+          "accounts_late_inovice_age_chorth4"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:dashboard",
+      "name": "accounts_ultimate",
+      "parents": [
+        [
+          "looker:look",
+          "late_accounts_details"
+        ],
+        [
+          "looker:look",
+          "accounts_late_inovice_age_chorth1"
+        ],
+        [
+          "looker:look",
+          "accounts_late_inovice_age_chorth2"
+        ],
+        [
+          "looker:look",
+          "accounts_late_inovice_age_chorth3"
+        ],
+        [
+          "looker:look",
+          "accounts_late_inovice_age_chorth4"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:dashboard",
+      "name": "sales_rep_region_overview",
+      "parents": [
+        [
+          "looker:look",
+          "late_accounts_details"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:schedule",
+      "name": "accounts_enterprise_report",
+      "parents": [
+        [
+          "looker:dashboard",
+          "ops_enterprise"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:schedule",
+      "name": "accounts_premium_report",
+      "parents": [
+        [
+          "looker:dashboard",
+          "ops_startup"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:schedule",
+      "name": "accounts_ultimate_report",
+      "parents": [
+        [
+          "looker:dashboard",
+          "ops_startup"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:schedule",
+      "name": "cro_weekly_report",
+      "parents": [
+        [
+          "looker:dashboard",
+          "finance_postings"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:schedule",
+      "name": "tax_posting_monthly",
+      "parents": [
+        [
+          "looker:dashboard",
+          "finance_postings"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:schedule",
+      "name": "bank_daily_recs",
+      "parents": [
+        [
+          "looker:dashboard",
+          "finance_postings"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:schedule",
+      "name": "cro_weekly_report_enterprise",
+      "parents": [
+        [
+          "looker:dashboard",
+          "ops_enterprise"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:schedule",
+      "name": "insolvent_accounts_monthly",
+      "parents": [
+        [
+          "looker:dashboard",
+          "sales_rep_region_overview"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:schedule",
+      "name": "insolvent_accounts_monthly",
+      "parents": [
+        [
+          "looker:dashboard",
+          "sales_rep_region_overview"
+        ]
+      ]
+    },
+    {
+      "node_type": "looker:schedule",
+      "name": "enterprise_accounts_hold",
+      "parents": [
+        [
+          "looker:dashboard",
+          "accounts_enterprise"
+        ]
+      ]
+    }
+  ]
+}

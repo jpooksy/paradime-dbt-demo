@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: stg_customers
+    columns:
+      - name: customer_id
+        tests:
+          - unique:
+              severity: warn
+          - not_null:
+              severity: error
+
+        meta:
+          primary_key: true
+        description: The unique identifier of our customers
+      - name: first_name
+        meta:
+          is sensitive: true
+        description: The first name entered during sign up of our customers
+      - name: email
+        meta:
+          is sensitive: true
+        description: The customer email id used when signing up to the platform
+    meta:
+      is sensitive: true
+      owner: John
+    description: "This is the base model for our customer data. Here we:\n\n- Rename\
+      \ columns to make them more user friendly\n- Exclude all the test users"
+  - name: stg_orders
+    columns:
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['placed']
+              severity: error
+
+
+  - name: stg_payments
+    columns:
+      - name: payment_id
+        tests:
+          - unique
+          - not_null
+
+        meta: {}
+        description: ''
+      - name: payment_method
+        tests:
+          - accepted_values:
+              values: ['credit_card', 'coupon', 'bank_transfer', 'gift_card']
+    meta: {}
+    description: "This table is not currently documented"

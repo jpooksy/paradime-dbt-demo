@@ -1,0 +1,73 @@
+schedules:
+  - name: daily_run
+#    schedule: "@daily"
+    schedule: "OFF"
+    environment: production
+    commands:
+      - dbt run
+    owner_email: fabio@paradime.io
+    slack_notify:
+      - "#tmp-alert-testing"
+      - "@fabio"
+    slack_on:
+      - passed
+      - failed
+    hightouch:
+      enabled: true
+      sync_on:
+        - passed
+        - failed
+      slugs:
+        - "test-model-to-google-sheets"
+
+  - name: CD_run
+    deferred_schedule:
+      enabled: true
+      deferred_schedule_name: daily_run
+    schedule: "OFF"
+    environment: production
+    commands:
+      - dbt run
+    owner_email: yasin@paradime.io
+    slack_notify:
+      - "#tmp-alert-testing"
+      - "@fabio"
+    slack_on:
+      - passed
+      - failed
+
+  - name: turbo ci job
+    turbo_ci:
+      enabled: true
+      deferred_manifest_schedule: daily_run
+      successful_run_only: false
+    schedule: "OFF"
+    environment: production
+    commands:
+      - dbt run
+    owner_email: alex@paradime.io
+    slack_on:
+      - passed
+      - failed
+    slack_notify:
+      - "tmp-alert-testing"
+      - "@fabio"
+    email_notify:
+      - "fabio.dileta@paradime.io"
+    email_on:
+      - failed
+
+  - name: lightdash
+    schedule: "OFF"
+    environment: production
+    commands:
+      - dbt run
+      - lightdash deploy
+    owner_email: fabio@paradime.io
+    git_branch: demo-lightdash
+    slack_notify:
+      - "#tmp-alert-testing"
+      - "@fabio"
+    slack_on:
+      - passed
+      - failed
