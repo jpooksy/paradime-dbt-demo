@@ -28,13 +28,7 @@ schedules:
     environment: production
     commands:
       - dbt run
-    owner_email: yasin@paradime.io
-    slack_notify:
-      - "#tmp-alert-testing"
-      - "@fabio"
-    slack_on:
-      - passed
-      - failed
+    owner_email: parker@paradime.io
 
   - name: turbo ci job # the name of your Turbo CI job
     turbo_ci:
