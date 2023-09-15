@@ -45,16 +45,7 @@ schedules:
     environment: production #the environment used to run the schedule -> this is always production
     commands:
       - dbt build --select state:modified+ #the dbt command you want to run when the pull request is opened
-    owner_email: john@acme.com #the email of the Turbo CI job owner_email
+    owner_email: parker@paradime.io #the email of the Turbo CI job owner_email
     slack_on: # the configuration of when a notification is triggered. Here we want to send a notification when the run is completed either successfully or when failing
-      - passed
-      - failed
-    slack_notify: # the channel/user that will be notified
-      - "#data-alerts"
-      - "@john"
-    email_notify: # the email addresses that will be notified
-      - "john@acme.com"
-      - "data_team@acme.com"
-    email_on: # the configuration of when a notification is triggered. Here we want to send a notification when the run is completed either successfully or when failing
       - passed
       - failed
