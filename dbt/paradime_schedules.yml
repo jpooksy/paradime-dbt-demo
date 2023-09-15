@@ -1,6 +1,6 @@
 schedules:
   - name: daily_run
-#    schedule: "@daily"
+    #    schedule: "@daily"
     schedule: "OFF"
     environment: production
     commands:
@@ -36,38 +36,25 @@ schedules:
       - passed
       - failed
 
-  - name: turbo ci job
+  - name: turbo ci job # the name of your Turbo CI job
     turbo_ci:
-      enabled: true
-      deferred_manifest_schedule: daily_run
-      successful_run_only: false
-    schedule: "OFF"
-    environment: production
+      enabled: true # true to enabled this Turbo CI job to run on pull request
+      deferred_manifest_schedule: daily_run #the name of the bolt schedule where the Turbo CI job will look for the most recent successful run manifest.json for state comparison
+      successful_run_only: false #[optional]by default paradime will look for the last successful run. Set this to false to let paradime to use defer with last run of the selected schedule, irrespective of the run status.
+    schedule: "OFF" # set the schedule configuration to not run on a schedule (to be used for PR only)
+    environment: production #the environment used to run the schedule -> this is always production
     commands:
-      - dbt run
-    owner_email: alex@paradime.io
-    slack_on:
+      - dbt build --select state:modified+ #the dbt command you want to run when the pull request is opened
+    owner_email: john@acme.com #the email of the Turbo CI job owner_email
+    slack_on: # the configuration of when a notification is triggered. Here we want to send a notification when the run is completed either successfully or when failing
       - passed
       - failed
-    slack_notify:
-      - "tmp-alert-testing"
-      - "@fabio"
-    email_notify:
-      - "fabio.dileta@paradime.io"
-    email_on:
-      - failed
-
-  - name: lightdash
-    schedule: "OFF"
-    environment: production
-    commands:
-      - dbt run
-      - lightdash deploy
-    owner_email: fabio@paradime.io
-    git_branch: demo-lightdash
-    slack_notify:
-      - "#tmp-alert-testing"
-      - "@fabio"
-    slack_on:
+    slack_notify: # the channel/user that will be notified
+      - "#data-alerts"
+      - "@john"
+    email_notify: # the email addresses that will be notified
+      - "john@acme.com"
+      - "data_team@acme.com"
+    email_on: # the configuration of when a notification is triggered. Here we want to send a notification when the run is completed either successfully or when failing
       - passed
       - failed
