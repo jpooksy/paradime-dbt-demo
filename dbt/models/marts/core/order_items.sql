@@ -43,7 +43,7 @@ final as (
 
         {% endfor -%}
 
-        order_payments.total_amount as order_amount
+        order_payments.total_amount as amount
 
     from orders
 
