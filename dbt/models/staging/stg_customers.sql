@@ -13,7 +13,7 @@ renamed as (
     select
         id as customer_id,
         first_name,
-        email as customer_email
+        email
     from source
 
 )
