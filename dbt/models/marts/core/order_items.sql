@@ -33,7 +33,7 @@ final as (
 
     select
         orders.order_id,
-        orders.customer_id as c_id,
+        orders.customer_id,
         orders.order_date,
         orders.status,
 
