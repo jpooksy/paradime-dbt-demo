@@ -12,13 +12,6 @@ schedules:
     slack_on:
       - passed
       - failed
-    hightouch:
-      enabled: true
-      sync_on:
-        - passed
-        - failed
-      slugs:
-        - "test-model-to-google-sheets"
 
   - name: CD_run
     deferred_schedule:
