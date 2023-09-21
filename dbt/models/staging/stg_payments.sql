@@ -16,7 +16,7 @@ renamed as (
         payment_method,
 
         --`amount` is currently stored in cents, so we convert it to dollars
-        amount as amount_in_cents
+        amount / 100 as amount_in_cents
 
     from source
 
