@@ -13,6 +13,7 @@ schedules:
       - passed
       - failed
 
+
   - name: CD_run
     deferred_schedule:
       enabled: true
