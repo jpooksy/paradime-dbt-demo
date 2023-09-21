@@ -1,7 +1,7 @@
 schedules:
   - name: daily_run
     #    schedule: "@daily"
-    schedule: "OFF"
+    schedule: "@weekly"
     environment: production
     commands:
       - dbt run
