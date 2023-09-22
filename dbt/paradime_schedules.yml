@@ -14,7 +14,7 @@ schedules:
       - failed
 
 
-  {# - name: CD_run
+  - name: CD_run
     deferred_schedule:
       enabled: true
       deferred_schedule_name: daily_run
