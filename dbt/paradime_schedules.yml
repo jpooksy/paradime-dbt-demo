@@ -12,18 +12,7 @@ schedules:
     slack_on:
       - passed
       - failed
-
-
-  {# - name: CD_run
-    deferred_schedule:
-      enabled: true
-      deferred_schedule_name: daily_run
-    schedule: "OFF"
-    environment: production
-    commands:
-      - dbt run
-    owner_email: parker@paradime.io
-
+      
   - name: turbo ci job # the name of your Turbo CI job
     turbo_ci:
       enabled: true # true to enabled this Turbo CI job to run on pull request
@@ -36,4 +25,4 @@ schedules:
     owner_email: parker@paradime.io #the email of the Turbo CI job owner_email
     slack_on: # the configuration of when a notification is triggered. Here we want to send a notification when the run is completed either successfully or when failing
       - passed
-      - failed #}
+      - failed

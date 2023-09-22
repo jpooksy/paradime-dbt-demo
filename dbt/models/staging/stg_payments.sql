@@ -17,7 +17,6 @@ renamed as (
 
         --`amount` is currently stored in cents, so we convert it to dollars
         amount / 100 as amount
-
     from source
 
 )
