@@ -1,5 +1,5 @@
 schedules:
-  - name: hourly_run
+  - name: daily_run
     schedule: "@hourly"
     environment: production
     commands:
@@ -16,7 +16,7 @@ schedules:
   - name: CD_run
     deferred_schedule:
       enabled: true
-      deferred_schedule_name: hourly_run
+      deferred_schedule_name: daily_run
     schedule: "OFF"
     environment: production
     commands:
@@ -26,7 +26,7 @@ schedules:
   - name: turbo ci job # the name of your Turbo CI job
     turbo_ci:
       enabled: true # true to enabled this Turbo CI job to run on pull request
-      deferred_manifest_schedule: hourly_run #the name of the bolt schedule where the Turbo CI job will look for the most recent successful run manifest.json for state comparison
+      deferred_manifest_schedule: daily_run #the name of the bolt schedule where the Turbo CI job will look for the most recent successful run manifest.json for state comparison
       successful_run_only: false #[optional]by default paradime will look for the last successful run. Set this to false to let paradime to use defer with last run of the selected schedule, irrespective of the run status.
     schedule: "OFF" # set the schedule configuration to not run on a schedule (to be used for PR only)
     environment: production #the environment used to run the schedule -> this is always production
