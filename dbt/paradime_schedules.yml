@@ -1,6 +1,6 @@
 schedules:
   - name: daily_run
-    schedule: "@hourly"
+    schedule: "@weekly"
     environment: production
     commands:
       - dbt run
